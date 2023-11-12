@@ -1,5 +1,3 @@
-require("update-electron-app")();
-
 const { menubar } = require("menubar");
 const Nucleus = require("nucleus-analytics");
 
@@ -33,8 +31,9 @@ app.on("ready", () => {
         webviewTag: true,
         // nativeWindowOpen: true,
       },
-      width: 450,
-      height: 550,
+      minWidth: 400,
+      width: 500,
+      height: 650,
     },
     tray,
     showOnAllWorkspaces: true,
@@ -81,12 +80,6 @@ app.on("ready", () => {
         label: "View on GitHub",
         click: () => {
           shell.openExternal("https://github.com/one-data-cookie/chatgpt-mac");
-        },
-      },
-      {
-        label: "Author on Twitter",
-        click: () => {
-          shell.openExternal("https://twitter.com/kolacekm");
         },
       },
     ];
