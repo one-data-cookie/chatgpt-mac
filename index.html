@@ -10,39 +10,31 @@
     <webview id="webview" src="https://chat.openai.com/chat" autosize="on" >
    </webview>
   </div>
-    <script>
-    const webview = document.getElementById('webview');
-    webview.addEventListener('dom-ready', function() {
-
-      // hide message below text input, sidebar, suggestions on new chat
+      // hide message below text input
       webview.insertCSS(`
         .text-xs.text-center {
           opacity: 0;
           height: 0;
-          margin-bottom: -10px;
+          font-size: 0;
+          padding: 0;
+          margin: 0;
+          margin-bottom: 10px;
         }
-        
-        .sticky,
-        .pointer-events-auto.flex.border-orange-500,
-        [class*="shared__Capabilities"] {
-          display: none !important;
-        }
+      `);
 
-        [class*="shared__Wrapper"] {
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          margin-top: 15vh;
-        }
-
-        [class*="shared__Wrapper"] h3 {
-          margin-top: -40px;
-          font-size: 20px;
-        }
-      `)
-
+      // toggle dark mode based on user preferences 
       const element = webview.executeJavaScript(`
-        document.querySelector("[class*='shared__Wrapper']").innerHTML += "<h3>Start by asking anything.</h3>"
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        mediaQuery.addListener(updateStyles);
+        updateStyles(mediaQuery);
+
+        function updateStyles(mq) {
+          if (mq.matches) {
+            document.body.classList.add("dark");
+          } else {
+            document.body.classList.remove("dark");
+          }
+        }
       `);
     });
 
