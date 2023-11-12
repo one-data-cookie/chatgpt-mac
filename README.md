@@ -14,4 +14,4 @@ Install from [releases](https://github.com/one-data-cookie/chatgpt-mac/releases/
 
 ## Credits
  Forked from [`vincelwt/chatgpt-mac`](https://github.com/vincelwt/chatgpt-mac).
- Credit and copyrights go to OpenAI.
+ Credit and copyrights go to [OpenAI](https://openai.com/).
