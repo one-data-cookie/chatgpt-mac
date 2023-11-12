@@ -11,6 +11,8 @@ const {
   Menu,
   globalShortcut,
   shell,
+  clipboard,
+  MenuItem,
 } = require("electron");
 const contextMenu = require("electron-context-menu");
 
@@ -70,7 +72,7 @@ app.on("ready", () => {
       {
         label: "Open in browser",
         click: () => {
-          shell.openExternal("https://chat.openai.com/chat");
+          shell.openExternal("https://chat.openai.com/");
         },
       },
       {
@@ -102,7 +104,15 @@ app.on("ready", () => {
     });
     const menu = new Menu();
 
-    globalShortcut.register("CommandOrControl+Shift+g", () => {
+    menu.append(new MenuItem({
+      label: 'Local Shortcuts',
+      submenu: [{
+        role: 'exit',
+        accelerator: 'Esc', click: () => { mb.hideWindow() }
+      }]
+    }))
+
+    globalShortcut.register("CommandOrControl+Alt+c", () => {
       if (window.isVisible()) {
         mb.hideWindow();
       } else {
@@ -138,7 +148,19 @@ app.on("ready", () => {
       // register cmd+c/cmd+v events
       contents.on("before-input-event", (event, input) => {
         const { control, meta, key } = input;
+
+        // send message with enter
+        if (input.type !== "keyDown" && key == "Enter") {
+          // if shift is also pressed, ignore
+          if (input.shift) return;
+
+          // Imitate pressing Command+Enter
+          contents.sendInputEvent({ type: 'keyDown', keyCode: 'Enter', modifiers: ['command'] });
+          contents.sendInputEvent({ type: 'keyUp', keyCode: 'Enter', modifiers: ['command'] });
+        }
+
         if (!control && !meta) return;
+        if (key === "x") contents.cut();
         if (key === "c") contents.copy();
         if (key === "v") contents.paste();
         if (key === "a") contents.selectAll();
@@ -146,6 +168,18 @@ app.on("ready", () => {
         if (key === "y") contents.redo();
         if (key === "q") app.quit();
         if (key === "r") contents.reload();
+        if (key === "n") contents.loadURL('https://chat.openai.com/');
+
+        // work with current URL
+        const currentURL = contents.getURL();
+        if (key === "u") {
+          clipboard.writeText(currentURL);
+          setTimeout(() => {mb.window.hide();}, 100);  // window hidden w 100ms delay
+        }
+        if (key === "o") {
+          shell.openExternal(currentURL);
+          setTimeout(() => {mb.window.hide();}, 100);  // window hidden w 100ms delay
+        }
       });
     }
   });
