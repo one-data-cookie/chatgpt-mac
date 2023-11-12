@@ -79,13 +79,13 @@ app.on("ready", () => {
       {
         label: "View on GitHub",
         click: () => {
-          shell.openExternal("https://github.com/vincelwt/chatgpt-mac");
+          shell.openExternal("https://github.com/one-data-cookie/chatgpt-mac");
         },
       },
       {
         label: "Author on Twitter",
         click: () => {
-          shell.openExternal("https://twitter.com/vincelwt");
+          shell.openExternal("https://twitter.com/kolacekm");
         },
       },
     ];

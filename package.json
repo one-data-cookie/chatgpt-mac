@@ -17,8 +17,8 @@
     "mac"
   ],
   "author": {
-    "name": "Vince Loewe",
-    "email": "vince@lyser.io"
+    "name": "Michal Kolacek",
+    "email": "kolacek.m@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vincelwt/chatgpt-mac"
+    "url": "https://github.com/one-data-cookie/chatgpt-mac"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.4",
