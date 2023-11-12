@@ -1,14 +1,17 @@
-# ChatGPT Mac Menubar App
-
+# ChatGPT Mac – menubar app
 This is a simple app that makes ChatGPT live in your menubar on Mac.
 
-You can use Cmd+Shift+C (Mac) to quickly open it from anywhere.
+## Usage
+- Use `Cmd+Shift+C` to quickly open it from anywhere and it will always stay on top
+- Hide by pressing `Cmd+Shift+C` again or simple `Esc`
+- You can use all standard shortcuts (like `Cmd+C`, `Cmd+V`, etc.)
+- `Cmd+N` opens a new chat
+- `Cmd+O` opens the current chat in browser
+- `Cmd+U` copies URL of the current chat
 
 ## Installation
-
 Install from [releases](https://github.com/one-data-cookie/chatgpt-mac/releases/).
 
-## Credit
-
+## Credits
  Forked from [`vincelwt/chatgpt-mac`](https://github.com/vincelwt/chatgpt-mac).
- All credit and copyrights goes to OpenAI.
+ Credit and copyrights go to OpenAI.
