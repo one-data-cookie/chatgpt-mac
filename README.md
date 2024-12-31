@@ -1,3 +1,7 @@
+This is now archived as it was replaced by a [native app](https://openai.com/chatgpt/download/).
+
+---
+
 # ChatGPT Mac – menubar app
 This is a simple app that makes ChatGPT live in your menubar on Mac.
 
